@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.AboutSection)Model.Content;
+}
+
+<section class="section-width flex-row justcont-center alit-center mainColor padding-100">
+	<div class="container-width flex-row gap-20">
+		<div class="flex-column gap-20">
+			<div><img src="@content.AboutImage!.Url()" /></div>
+			<div class="italic font-size-16">@content.AboutLabel</div>
+		</div>
+		<div class="flex-column gap-20">
+			<div class="weight-light font-size-20 italic">@content.AboutQuote</div>
+			<div class="font-size-14 weight-regular">@content.AboutText</div>
+		</div>
+	</div>
+</section>

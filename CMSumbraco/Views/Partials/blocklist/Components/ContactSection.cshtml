@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.ContactSection)Model.Content;
+	var settings = Model.Settings as ContentModels.ContactSettings;
+}
+
+<section class="@settings!.Color section-width flex-row alit-center justcont-center">
+	<div class="container-width flex-row gap-20 @settings!.Color!.Label">
+		<div class="relative">
+			<div class="absolute contactImage z-index-3"><img src="@content.ContactDudeImage!.Url()" /></div>
+			<div class="relative contactImage-2 z-index-2"><img src="@content.ContactBgImage!.Url()" /></div>
+		</div>
+		<div class="height-700 flex-column justcont-center gap-20 mainColor">
+			<div class="font-size-40 weight-bold">@content.ContactTitle</div>
+			<div>
+				<div class="flex-row gap-20">
+					<div><img src="/images/Icon address.png" /></div>
+					<div class="weight-semibold font-size-14">@content.ContactOfficeLabel</div>
+				</div>
+				<div class="font-size-14 weight-regular">Klarabergsviadukten 90, 111 52 Stockholm</div>
+			</div>
+			<div>
+				<div class="flex-row gap-20">
+					<div><img src="/images/Icon phone.png" /></div>
+					<div class="weight-semibold font-size-14">@content.ContactPhoneLabel</div>
+				</div>
+				<div class="font-size-14 italic">+46 8 123 456 75</div>
+			</div>
+			<div>
+				<div class="flex-row gap-20">
+					<div><img src="/images/Icon email.png" /></div>
+					<div class="weight-semibold font-size-14">@content.ContactEmailLabel</div>
+				</div>
+				<div class="font-size-14 italic">sales@onatrix.com</div>
+			</div>
+		</div>
+	</div>
+</section>

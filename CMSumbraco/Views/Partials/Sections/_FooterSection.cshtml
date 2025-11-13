@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	var rootContent = Umbraco.ContentAtRoot();
+	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+	var footerText = siteSettings!.FooterText;
+	var footerLabel = siteSettings!.FooterLabel;
+}
+
+<section class="black section-width flex-row justcont-center padding shadow z-index-2">
+	<div class="flex-row container-width gap-20">
+		<div class="mainColor weight-regular font-size-14">@footerText</div>
+		<div class="tanColor weight-regular font-size-14">@footerLabel</div>
+	</div>
+</section>

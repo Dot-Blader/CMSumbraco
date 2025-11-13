@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.TestimonialSection)Model.Content;
+}
+
+<section class="section-width flex-row White-100 justcont-right">
+	<div class="width-770 flex-column gap-20 mainColor padding justcont-center">
+		<div class="font-size-14 weight-bold tanColor">@content.TestLabel</div>
+		<div class="font-size-40 weight-bold">@content.TestTitle</div>
+		<div class="italic font-size-20">@content.TestText</div>
+		<div><img src="@content.TestRateImage!.Url()"/></div>
+		<div class="font-size-14 weight-regular">@content.TestBigName</div>
+		<div class="italic font-size-20">@content.TestCompany</div>
+	</div>
+	<div><img src="@content.TestImage!.Url()"/></div>
+</section>

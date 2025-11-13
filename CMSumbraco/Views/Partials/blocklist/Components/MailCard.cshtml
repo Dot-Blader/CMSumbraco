@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.MailCard)Model.Content;
+}
+
+<div class="flex-column gap-20 padding mainColorBG rounded shadow">
+	<div class="weight-semibold font-size-22 tanColor">@content.MailTitle</div>
+	<div class="font-size-14 weight-regular whiteColor">@content.MailText</div>
+	<form>
+		<input type="text" placeholder="E-mail address" class="padding italic font-size-13 rounded z-index-2" />
+	</form>
+	<div class="absolute mail-image"><img src="@content.MailImage!.Url()" /></div>
+</div>

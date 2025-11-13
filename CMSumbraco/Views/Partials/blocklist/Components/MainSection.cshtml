@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.MainSection)Model.Content;
+}
+
+<section class="section-width relative height-500">
+	<div class="container container-width mainContainer">
+		<div class="mainContent padding flex-column gap-40 mainColor">
+			<div class="flex-column gap-20">
+				<div class="tanColor font-size-14 weight-bold">@content.MainLabel</div>
+				<div class="font-size-40 weight-bold">@content.MainTitle</div>
+			</div>
+			<div class="flex-column gap-20">
+				<div class="font-size-20 weight-light italic">@content.MainQuote</div>
+				<div class="font-size-14 weight-regular">@content.MainText</div>
+				<div>
+					<div><img src="@content.MainImage!.Url()" /></div>
+					<div class="font-size-14 weight-regular">@content.MainFounder</div>
+				</div>
+			</div>
+		</div>
+		<div class="mainForm z-index-2 shadow rounded">
+			<div class="padding mainColorBG tanColor-2 rounded-top font-size-30 weight-bold">Request a call back</div>
+			<div class="flex-column justcont-center gap-20 padding White">
+				<div class="italic font-size-13">Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</div>
+				<form class="flex-column gap-20">
+					<input type="text" placeholder="Name" class="padding rounded italic font-size-13" />
+					<input type="text" placeholder="Email address" class="padding rounded italic font-size-13" />
+					<input type="text" placeholder="Phone" class="padding rounded italic font-size-13" />
+					<input type="text" placeholder="Financial consulting" class="width-430 padding rounded italic font-size-13" />
+					<button type="submit" class="padding mainColor tanColorBG-2 rounded weight-bold font-size-16">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

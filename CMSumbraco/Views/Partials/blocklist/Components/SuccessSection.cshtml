@@ -1,0 +1,47 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.SuccessSection)Model.Content;
+}
+
+<section class="section-width alit-center justcont-center successSection">
+	<div class="container-width">
+		<div class="padding mainColor flex-column justcont-center alit-center gap-40 relative height-820">
+			<div class="mainColor flex-column justcont-center alit-center gap-40 successTextDiv">
+				<div class="flex-column alit-center justcont-center">
+					<div class="font-size-40 weight-bold">@content.SuccessTitle</div>
+					<div class="tanColor font-size-40 weight-bold">@content.SuccessLabel</div>
+				</div>
+				<div class="width-770 weight-regular font-size-16 text-center">@content.SuccessText</div>
+				<a href="@content.SuccessLink!.Url" class="weight-bold font-size-16 padding mainColorBG tanColor-2 rounded">@content.SuccessLink.Name</a>
+			</div>
+			<div><img src="@content.SuccessGlobedotImage!.Url()" /></div>
+			<div class="successImage"><img src="@content.SuccessPeopleImage!.Url()" /></div>
+		</div>
+		<div class="flex-column alit-center justcont-center relative">
+			<div class="section-width padding flex-column alit-center justcont-center mainColorBG">
+				<div class="section-width flex-column alit-center successTextDiv mainColorBG height-820 gap-20">
+					<div class="tanColor weight-bold font-size-16">@content.SuccessStoryLabel</div>
+					<div class="whiteColor weight-bold font-size-40">@content.SuccessStoryTitle</div>
+					<div class="flex-row gap-40">
+						<div class="width-370 flex-column alit-center justcont-center">
+							<div class="tanColor weight-semibold font-size-100">689</div>
+							<div class ="whiteColor weight-semibold font-size-18 text-center">More than 100 customers has been served</div>
+						</div>
+						<div class="width-370 flex-column alit-center justcont-center">
+							<div class="tanColor weight-semibold font-size-100">370</div>
+							<div class="whiteColor weight-semibold font-size-18 text-center">More than 370 projects has been completed</div>
+						</div>
+						<div class="width-370 flex-column alit-center justcont-center">
+							<div class="tanColor weight-semibold font-size-100">125</div>
+							<div class="whiteColor weight-semibold font-size-18 text-center">More than 125 branches has been established in Europe and America</div>
+						</div>
+					</div>
+				</div>
+				<div class="z-index-2 relative successDotMove"><img src="@content.SuccessDotmapImage!.Url()" /></div>
+			</div>
+			<div class="White section-width height-200"></div>
+			<div class="successImage z-index-3"><img src="@content.SuccessMeetingImage!.Url()" /></div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,37 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.ServiceSection)Model.Content;
+	var settings = Model.Settings as ContentModels.ServiceSettings;
+
+	var current = Umbraco.AssignedContentItem;
+	var siteRoot = current?.Root();
+
+	var servicesPage = siteRoot?.Children<ServicesPage>()?.FirstOrDefault();
+	var items = servicesPage?.Children<ServiceDetail>()?.OrderByDescending(x => x.CreateDate).ToList() ?? [];
+}
+
+<section class="(@settings!.ServiceBgColor!.Label) section-width alit-center justcont-center padding-100">
+	<div class="container-width flex-column justcont-center alit-center gap-20">
+		@if (settings!.ShowServiceLabel)
+		{
+			<div class="font-size-14 weight-bold tanColor">@content.ServiceLabel</div>
+		}
+		<div class="font-size-40 weight-bold">@content.ServiceTitle</div>
+		<div class="serviceGrid gap-20">
+			@if (items.Any())
+			{
+				foreach (var item in items)
+				{
+					<div class="width-370 White shadow rounded">
+						<a href="@item.Url()">
+							<div class="margin font-size-22 weight-semibold">@item.Name</div>
+							<div><img src="@item.ServiceDetailImage!.Url()" /></div>
+							<div class="margin font-size-14 weight-regular">@item.ServiceDetailText</div>
+						</a>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	var content = (ContentModels.QuestionSection)Model.Content;
+}
+
+<section class="section-width flex-row justcont-center alit-center padding-100">
+	<div class="container-width mainColor flex-column gap-20">
+		<div class="font-size-22 weight-bold">@content.QuestionTitle</div>
+		<form class="flex-column gap-20">
+			<div class="flex-row gap-20 justcont-space">
+				<input type="text" placeholder="Name" class="italic font-size-13 padding rounded width-500"/>
+				<input type="text" placeholder="Email" class="italic font-size-13 padding rounded width-500" />
+			</div>
+			<input type="text" placeholder="Question" class="italic font-size-13 padding rounded" />
+			<button type="submit" class="font-size-16 weight-bold padding mainColorBG tanColor width-190 rounded">Submit</button>
+		</form>
+	</div>
+</section>

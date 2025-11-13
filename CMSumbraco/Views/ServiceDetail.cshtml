@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ServiceDetail>
+@{
+	Layout = "mainLayout.cshtml";
+}
+
+<partial name="Partials/Sections/_PageHeader" model="(IPageHeader)Model" />
+
+<section class="section-width flex-column gap-20 mainColor alit-center padding-100">
+	<div class="container-width flex-row gap-40">
+		<aside class="flex-column gap-20">
+			@Html.GetBlockListHtml(Model.ServiceDetailAsides)
+		</aside>
+		<div class="detail-line mainColorBG shadow"></div>
+		<div class="flex-column gap-20">@Html.Raw(Model.ServiceDetailBody)</div>
+	</div>
+	@Html.GetBlockListHtml(Model.Sections)
+</section>

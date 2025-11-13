@@ -1,0 +1,65 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.PublishedCache
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Cms.Core.Services.Navigation
+
+@inject IVariationContextAccessor VariationContextAccessor
+@inject IPublishedContentCache PublishedContentCache
+@inject IDocumentNavigationQueryService DocumentNavigationQueryService
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+@*
+    This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
+    This is the home page for a standard website.
+    It also highlights the current active page/section in the navigation with the CSS class "current".
+*@
+
+@{
+	var rootContent = Umbraco.ContentAtRoot();
+	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+	var contactAddress = siteSettings?.ContactAddress ?? "Insert address här tack.";
+	var siteSocials = siteSettings!.SiteSocials;
+	var siteLogo = siteSettings!.SiteLogo;
+	var search = siteSettings!.Search;
+
+	var selection = Model.Root().Children().Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
+}
+
+<header class="section-width flex-column alit-center shadow z-index-2">
+	<div class="section-width mainColorBG justcont-center">
+		<div class="container-width flex-row justcont-space alit-center">
+			<div class="whiteColor weight-regular font-size-13">@contactAddress</div>
+			@if (siteSocials != null)
+			{
+				<div><img src="@siteSocials.Url()" /></div>
+			}
+		</div>
+	</div>
+	<nav class="container-width mainColor flex-row alit-center justcont-space">
+		<div>
+			@if (siteLogo != null)
+			{
+				<img src="@siteLogo.Url()" />
+			}
+		</div>
+		@if (selection?.Length > 0)
+		{
+			<ul class="flex-row">
+				@foreach (var item in selection)
+				{
+					<li class="@(item.IsAncestorOrSelf(Model) ? "current" : null) margin">
+						<a href="@item.Url(PublishedUrlProvider)" class="weight-bold font-size-16">@item.Name</a>
+					</li>
+				}
+			</ul>
+		}
+		<div>
+			@if (search != null)
+			{
+				<img src="@search.Url()" />
+			}
+		</div>
+	</nav>
+</header>
